@@ -3,44 +3,43 @@ module documentation here
 """
 
 
-def read_write_relation(path):
+def read_graph_from_file(path):
     """
     Documentation here
     """
     pass
 
 
-def r_s_closure_search():
-    """
-    ***Search for reflexive / symetrical closure of binary relation***
-    Documentation here
-    """
-    pass
-
-
-def t_closure_search():
-    """
-    ***transitive closure search***
-    Documentation here
-    """
-    pass
-
-
-def check_t_closure():
+def write_graph_to_file(path):
     """
     Documentation here
     """
     pass
 
 
-def create_equivalence_classes():
+def find_connected_components():
     """
     Documentation here
     """
     pass
 
 
-def count_transitive_closures():
+def find_strongly_connected_components():
+    """
+    Documentation here
+    """
+    pass
+
+
+def пошук_точок_сполучення():
+    """
+    чесно хз як назвати нормально на англ
+    Documentation here
+    """
+    pass
+
+
+def find_bridges():
     """
     Documentation here
     """
