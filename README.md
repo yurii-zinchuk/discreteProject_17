@@ -1,13 +1,15 @@
 # discreteProject_17
+Це README для проєкту з умовами та складом команди, можливо додатковою інформацією.
+**Звіт до проєкту** -> ZVIT.md
 
-## Project #5 :
+## Проєкт #5 :
 ---
 
 
 
-## Team
-* Roman Mutel
-* Yurii Zinchuk
-* Lera Fedorchak
-* Marko Ruzak
-* Mykhailo Humeniuk
+## Команда
+* Роман Мутель
+* Юрій Зінчук
+* Валерія Федорчак
+* Марко Рузак
+* Михайло Гуменюк
