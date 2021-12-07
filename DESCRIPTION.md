@@ -1,6 +1,6 @@
 # discreteProject_17
-Це README для проєкту з умовами та складом команди, можливо додатковою інформацією.
-**Звіт до проєкту** -> [ZVIT.md](https://github.com/gingrwho/discreteProject_17/blob/main/ZVIT.md)
+Це .md файл з умовами та складом команди, можливо додатковою інформацією.
+**Звіт до проєкту** -> [README.md](https://github.com/gingrwho/discreteProject_17/blob/main/README.md)
 
 ## Склад команди
 * Роман Мутель
