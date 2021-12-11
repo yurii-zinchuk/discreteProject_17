@@ -1,7 +1,7 @@
 """
 module documentation here
 """
-#Commit thisсщь
+
 
 def read_graph_from_file(path_file: str):
     """
@@ -56,7 +56,7 @@ def пошук_точок_сполучення():
     """
     pass
 
-aodsaoiasodisa
+
 def find_bridges():
     """
     Documentation here
