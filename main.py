@@ -31,9 +31,8 @@ def find_strongly_connected_components():
     pass
 
 
-def пошук_точок_сполучення():
+def find_connection_points():
     """
-    чесно хз як назвати нормально на англ
     Documentation here
     """
     pass
