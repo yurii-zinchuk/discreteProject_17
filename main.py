@@ -3,6 +3,8 @@ module documentation here
 """
 
 
+#a test commit
+
 def read_graph_from_file(path_file: str):
     """
     The function reads apexes of the graph from file
