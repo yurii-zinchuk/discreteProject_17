@@ -2,67 +2,75 @@
 module documentation here
 """
 
-
-#second acc test commit 3.0
-
-def read_graph_from_file(path_file: str):
-    """
-    The function reads apexes of the graph from file
-
-    """
-    list_of_graphs = []
-    with open(path_file, 'r') as r_file:
-        file_reader = csv.reader(r_file, delimiter = "\n")
-        for line in file_reader:
-            apexes = line[0].split()
-            list_of_graphs.append((int(apexes[0]), int(apexes[1])))
-    return list_of_graphs
-    # print(read_graph_from_file('graph_100_1942_0.csv'))
+import csv
 
 
+def read_graph(path: str) -> set:
+    """Return a graph, read from file,
+    as a set of tuples. Each tuple
+    represents an edge.
 
-def write_graph_to_file(path_file: str, list_with_graphs: list):
-    """
-    The function writes list of tuples with apexes to the file in csv format
+    Args:
+        path (str): Path to csv file with graph
 
-    """
-    with open(path_file, 'w') as w_file:
-        for one_tuple in list_with_graphs:
-            for item in one_tuple:
-                if one_tuple.index(item) == 0:
-                    w_file.write(str(item) + ' ')
-                else:
-                    w_file.write(str(item))
-            w_file.write('\n')
-            # write_graph_to_file('dyskr_14.csv',read_graph_from_file('graph_100_1942_0.csv'))
-
-
-def find_connected_components():
-    """
-    Documentation here
+    Returns:
+        set: Graph, read from file
     """
 
-    pass
+    graph = set()
+
+    with open(path, 'r') as file:
+        reader = csv.reader(file, delimiter=' ')
+        for line in reader:
+            graph.add((int(line[0]), int(line[1])))
+
+    return graph
 
 
-def find_strongly_connected_components():
+def write_graph(path: str, graph: set) -> None:
+    """Writes graph represented as
+    set of tuples, where tuple is an edge,
+    in a csv file.
+
+    Args:
+        path (str): Path to csv file
+        graph (set): Graph, represented by set
+    """
+
+    with open(path, 'w') as file:
+        writer = csv.writer(file, delimiter=' ')
+        for edge in graph:
+            writer.writerow(edge)
+
+
+def connected_components():
     """
     Documentation here
     """
     pass
 
 
-def пошук_точок_сполучення():
-    """
-    чесно хз як назвати нормально на англ
-    Documentation here
-    """
-    pass
-
-
-def find_bridges():
+def strongly_connected_components():
     """
     Documentation here
     """
     pass
 
+
+def connection_points():
+    """
+    Documentation here
+    """
+    pass
+
+
+def bridges():
+    """
+    Documentation here
+    """
+    pass
+
+
+if __name__ == "__main__":
+    # write_graph('new.csv', read_graph('graphs/graphs/graph_100_1942_0.csv'))
+    pass
