@@ -18,6 +18,7 @@ def read_graph(path: str) -> set:
     """
 
     graph = set()
+
     with open(path, 'r') as file:
         reader = csv.reader(file)
         for line in reader:
@@ -70,12 +71,5 @@ def bridges():
     pass
 
 
-<<<<<<< HEAD
-def connection_points():
-    """
-    Documentation here
-    """
-=======
 if __name__ == "__main__":
->>>>>>> wr
     pass
