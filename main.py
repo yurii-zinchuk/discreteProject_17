@@ -2,45 +2,80 @@
 module documentation here
 """
 
+import csv
 
-def read_graph_from_file(path):
+
+def read_graph(path: str) -> set:
+    """Return a graph, read from file,
+    as a set of tuples. Each tuple
+    represents an edge.
+
+    Args:
+        path (str): Path to csv file with graph
+
+    Returns:
+        set: Graph, read from file
+    """
+
+    graph = set()
+    with open(path, 'r') as file:
+        reader = csv.reader(file)
+        for line in reader:
+            graph.add((int(line[0]), int(line[1])))
+
+    return graph
+
+
+def write_graph(path: str, graph: set) -> None:
+    """Writes graph represented as
+    set of tuples, where tuple is an edge,
+    in a csv file.
+
+    Args:
+        path (str): Path to csv file
+        graph (set): Graph, represented by set
+    """
+
+    with open(path, 'w') as file:
+        writer = csv.writer(file)
+        for edge in graph:
+            writer.writerow(edge)
+
+
+def connected_components():
     """
     Documentation here
     """
     pass
 
 
-def write_graph_to_file(path):
+def strongly_connected_components():
     """
     Documentation here
     """
     pass
 
 
-def find_connected_components():
+def connection_points():
     """
     Documentation here
     """
     pass
 
 
-def find_strongly_connected_components():
+def bridges():
     """
     Documentation here
     """
     pass
 
 
-def find_connection_points():
+<<<<<<< HEAD
+def connection_points():
     """
     Documentation here
     """
+=======
+if __name__ == "__main__":
+>>>>>>> wr
     pass
-
-
-def find_bridges():
-    """
-    Documentation here
-    """
-    pass
-
