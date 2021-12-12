@@ -20,7 +20,7 @@ def read_graph(path: str) -> set:
     graph = set()
 
     with open(path, 'r') as file:
-        reader = csv.reader(file)
+        reader = csv.reader(file, delimiter=' ')
         for line in reader:
             graph.add((int(line[0]), int(line[1])))
 
@@ -38,7 +38,7 @@ def write_graph(path: str, graph: set) -> None:
     """
 
     with open(path, 'w') as file:
-        writer = csv.writer(file)
+        writer = csv.writer(file, delimiter=' ')
         for edge in graph:
             writer.writerow(edge)
 
@@ -72,4 +72,5 @@ def bridges():
 
 
 if __name__ == "__main__":
+    # write_graph('new.csv', read_graph('graphs/graphs/graph_100_1942_0.csv'))
     pass
