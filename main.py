@@ -5,7 +5,7 @@ module documentation here
 import csv
 
 
-def read_graph(path: str) -> set:
+def read_graph(path: str) -> list:
     """Return a graph, read from file,
     as a set of tuples. Each tuple
     represents an edge.
@@ -16,18 +16,16 @@ def read_graph(path: str) -> set:
     Returns:
         set: Graph, read from file
     """
-
-    graph = set()
-
-    with open(path, 'r') as file:
-        reader = csv.reader(file, delimiter=' ')
-        for line in reader:
-            graph.add((int(line[0]), int(line[1])))
-
-    return graph
+    list_of_graphs = []
+    with open(path, 'r') as r_file:
+        file_reader = csv.reader(r_file, delimiter="\n")
+        for line in file_reader:
+            apexes = line[0].split()
+            list_of_graphs.append((int(apexes[0]), int(apexes[1])))
+    return list_of_graphs
 
 
-def write_graph(path: str, graph: set) -> None:
+def write_graph(path: str, graph: list) -> None:
     """Writes graph represented as
     set of tuples, where tuple is an edge,
     in a csv file.
@@ -72,5 +70,4 @@ def bridges():
 
 
 if __name__ == "__main__":
-    # write_graph('new.csv', read_graph('graphs/graphs/graph_100_1942_0.csv'))
     pass
