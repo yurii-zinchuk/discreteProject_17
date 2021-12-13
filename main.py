@@ -28,8 +28,8 @@ def read_graph(path: str) -> list:
             graph.append((int(line[0]), int(line[1])))
 
     return graph
-
-
+  
+  
 def write_graph(path: str, graph: list) -> None:
     """Writes graph represented as
     list of tuples, where tuple is an edge,
