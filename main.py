@@ -131,31 +131,46 @@ def strongly_connected_components():
     """
     pass
 
-def dfs_nums(graph: dict, start: int) -> set:
-    """Return a set of tuples (node, dfs_number) after dfs.
+
+def dfs_tree(graph:dict, start:int) -> dict:
+    """
+    Returns an adjacency matrix for an undirected DFS-Tree from the given graph
 
     Args:
         graph (dict): Adjacency matrix of a graph
         start (int): Starting node
 
     Returns:
-        set: Tuples of nodes and their numbers after dfs
+        dict: Adjacency matrix of a DFS spanning tree of the given graph
     """
 
-    stack, visited, visited_nums, i = [start], set(), set(), 1
+    stack, dfs_tree, visited = [start], {}, set()
 
     while stack:
-        node = stack.pop()
-        if node in visited:
+        node = stack[-1]
+        visited.add(node)
+
+        for neighbour in sorted(graph[node]):
+            if neighbour not in visited:
+                stack.append(neighbour)
+                visited.add(neighbour)
+                break
+        else:
+            stack.pop()
             continue
 
-        for neighbour in graph[node]:
-            stack.append(neighbour)
-        visited.add(node)
-        visited_nums.add((node,i))
-        i += 1
+        if len(stack) > 1:
+            # print(stack[-2], stack[-1])
+            if stack[-2] not in dfs_tree.keys():
+                dfs_tree[stack[-2]] = {stack[-1]}
+            else:
+                dfs_tree[stack[-2]] |= {stack[-1]}
+            if stack[-1] not in dfs_tree.keys():
+                dfs_tree[stack[-1]] = {stack[-2]}
+            else:
+                dfs_tree[stack[-1]] |= {stack[-2]}
 
-    return visited_nums
+    return dfs_tree
 
 def cut_vertices(graph: list):
     """
@@ -167,7 +182,12 @@ def cut_vertices(graph: list):
     Returns:
         list: cut vertices (connection points)
     """
-    pass
+
+    matrix_graph = create_adj_matrix(graph[1:])
+    root = graph[1][0]
+    cut_v = []
+
+    return cut_v
 
 
 def bridges():
@@ -178,4 +198,7 @@ def bridges():
 
 
 if __name__ == "__main__":
-    print(dfs_nums(create_adj_matrix(read_graph('graphs/graph_100_1942_0.csv')[0:100]),71))
+    my_graph = read_graph('graphs/graph_100_1942_0.csv')
+    my_simple_graph = read_graph('graphs/simple_test.csv')
+    print(dfs_tree(create_adj_matrix(my_simple_graph[1:]), 2))
+    # dfs_tree(create_adj_matrix(my_simple_graph[1:]), 2)
