@@ -1,6 +1,6 @@
 """
 This module contains functions to work with graphs.
-Functions are able to analise graphs' connected components,
+Functions are able to analyse graphs' connected components,
 strongly connected components, briges and connection points.
 """
 
@@ -46,12 +46,13 @@ def write_graph(path: str, graph: list) -> None:
             writer.writerow(edge)
 
 
-def create_adj_matrix(graph: list) -> dict:
+def create_adj_matrix(graph: list, directed: bool=False) -> dict:
     """Return adjacency matrix of a graph,
     given the list of it's edges.
 
     Args:
-        graph (set): Graph as a list of edges
+        graph (list): Graph as a list of edges
+        directed (bool): Sets if the graph is directed or not
 
     Returns:
         dict: Adjacency matrix
@@ -65,10 +66,11 @@ def create_adj_matrix(graph: list) -> dict:
         else:
             adj_matrix[node1].add(node2)
 
-        if node2 not in adj_matrix:
-            adj_matrix[node2] = {node1}
-        else:
-            adj_matrix[node2].add(node1)
+        if not directed:
+            if node2 not in adj_matrix:
+                adj_matrix[node2] = {node1}
+            else:
+                adj_matrix[node2].add(node1)
 
     return adj_matrix
 
@@ -145,4 +147,4 @@ def bridges():
 
 
 if __name__ == "__main__":
-    pass
+    print(create_adj_matrix(read_graph('graphs/graph_100_1942_0.csv')[1:30], directed=True))
