@@ -134,7 +134,9 @@ def strongly_connected_components():
 
 def dfs_tree(graph:dict, start:int) -> dict:
     """
-    Returns an adjacency matrix for an undirected DFS-Tree from the given graph
+    Beautiful, but useless
+
+    Returns an adjacency matrix for a DFS Spanning tree from the given graph
 
     Args:
         graph (dict): Adjacency matrix of a graph
@@ -172,22 +174,77 @@ def dfs_tree(graph:dict, start:int) -> dict:
 
     return dfs_tree
 
-def cut_vertices(graph: list):
+def dfs_tree_order(graph:dict, start:int):
     """
-    Finds single vertices, whose removal maked the undirected graph disconnected
-
-    Args:
-        graph (list): Undirected graph as a list of edges
-
-    Returns:
-        list: cut vertices (connection points)
+    Returns a list of ordered vertices from a dfs-tree
     """
 
-    matrix_graph = create_adj_matrix(graph[1:])
-    root = graph[1][0]
-    cut_v = []
+    stack, vertices, visited, i = [start], [], set(), 1
 
-    return cut_v
+    while stack:
+        node = stack[-1]
+        if node not in vertices:
+            vertices.append(node)
+        visited.add(node)
+
+        for neighbour in sorted(graph[node]):
+            if neighbour not in visited:
+                stack.append(neighbour)
+                visited.add(neighbour)
+                break
+        else:
+            stack.pop()
+            continue
+
+    return vertices
+
+
+
+def cut_vertices_dfs(vertex: int, root, d, h, used, order, graph: dict, cut_v):
+    """
+    Helper function for cut_vertices
+    """
+
+    used[vertex] = 1
+    d[vertex] = h[vertex] = order
+    order += 1
+    children = 0
+
+    for u in graph[vertex]:
+        if u == root:
+            continue
+        elif used[u]:
+            # коли ребро зворотнє
+            h[vertex] = min(h[vertex], d[u])
+        else:
+            # коли ребро пряме
+            cut_vertices_dfs(u, vertex, d, h, used, order, graph, cut_v)
+            h[vertex] = min(h[vertex], h[u])
+            children += 1
+            if h[u] >= d[vertex] and root != -1:
+                cut_v[vertex] = 1
+
+    # спеціальний випадок, якщо вершина є коренем (якщо root == -1)
+    if root == -1 and children > 1:
+        cut_v[vertex] = 1
+
+def cut_vertices(graph: dict):
+    """
+    Returns a list of cut vertices
+    """
+
+    n = len(graph.keys()) + 1
+    used, d, h, cut_v = [0] * n, [0] * n, [0] * n, [0] * n
+    for i in range(1,n):
+        if used[i] == 0:
+            cut_vertices_dfs(i, -1, d, h, used, 1, graph, cut_v)
+
+    cut_v_names = []
+    for i in range(n):
+        if cut_v[i]:
+            cut_v_names.append(i)
+
+    return cut_v_names
 
 
 def bridges():
@@ -200,5 +257,4 @@ def bridges():
 if __name__ == "__main__":
     my_graph = read_graph('graphs/graph_100_1942_0.csv')
     my_simple_graph = read_graph('graphs/simple_test.csv')
-    print(dfs_tree(create_adj_matrix(my_simple_graph[1:]), 2))
-    # dfs_tree(create_adj_matrix(my_simple_graph[1:]), 2)
+    print(cut_vertices(create_adj_matrix(my_simple_graph[1:])))
