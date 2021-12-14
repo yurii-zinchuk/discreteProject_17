@@ -102,7 +102,7 @@ def dfs(graph: dict, start: int) -> set:
 
 
 def connected_components(graph: list) -> list:
-    """Return a list containing conncected components.
+    """Return a list containing connected components.
     Connected component is identified by the node with least number
     that belongs to a the component.
 
@@ -114,7 +114,7 @@ def connected_components(graph: list) -> list:
     """
 
     matrix_graph = create_adj_matrix(graph[1:])
-    nodesleft = set(graph.keys())
+    nodesleft = set(matrix_graph.keys())
     components = []
 
     while nodesleft:
@@ -132,9 +132,15 @@ def strongly_connected_components():
     pass
 
 
-def connection_points():
+def connection_points(graph: list):
     """
-    Documentation here
+    Finds single vertices, whose removal maked the undirected graph disconnected
+
+    Args:
+        graph (list): Undirected graph as a list of edges
+
+    Returns:
+        list: Connection points
     """
     pass
 
@@ -147,4 +153,4 @@ def bridges():
 
 
 if __name__ == "__main__":
-    print(create_adj_matrix(read_graph('graphs/graph_100_1942_0.csv')[1:30], directed=True))
+    print(connected_components(read_graph('graphs/graph_100_1942_0.csv')[0:100]))
