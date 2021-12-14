@@ -131,8 +131,33 @@ def strongly_connected_components():
     """
     pass
 
+def dfs_nums(graph: dict, start: int) -> set:
+    """Return a set of tuples (node, dfs_number) after dfs.
 
-def connection_points(graph: list):
+    Args:
+        graph (dict): Adjacency matrix of a graph
+        start (int): Starting node
+
+    Returns:
+        set: Tuples of nodes and their numbers after dfs
+    """
+
+    stack, visited, visited_nums, i = [start], set(), set(), 1
+
+    while stack:
+        node = stack.pop()
+        if node in visited:
+            continue
+
+        for neighbour in graph[node]:
+            stack.append(neighbour)
+        visited.add(node)
+        visited_nums.add((node,i))
+        i += 1
+
+    return visited_nums
+
+def cut_vertices(graph: list):
     """
     Finds single vertices, whose removal maked the undirected graph disconnected
 
@@ -140,7 +165,7 @@ def connection_points(graph: list):
         graph (list): Undirected graph as a list of edges
 
     Returns:
-        list: Connection points
+        list: cut vertices (connection points)
     """
     pass
 
@@ -153,4 +178,4 @@ def bridges():
 
 
 if __name__ == "__main__":
-    print(connected_components(read_graph('graphs/graph_100_1942_0.csv')[0:100]))
+    print(dfs_nums(create_adj_matrix(read_graph('graphs/graph_100_1942_0.csv')[0:100]),71))
