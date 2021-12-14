@@ -51,7 +51,7 @@ def create_adj_matrix(graph: list) -> dict:
     given the list of it's edges.
 
     Args:
-        graph (set): Graph as a list of edges
+        graph (list): Graph as a list of edges
 
     Returns:
         dict: Adjacency matrix
@@ -112,13 +112,13 @@ def connected_components(graph: list) -> list:
     """
 
     matrix_graph = create_adj_matrix(graph[1:])
-    nodesleft = set(graph.keys())
+    nodesleft = set(matrix_graph.keys())
     components = []
 
     while nodesleft:
         con_component = dfs(matrix_graph, nodesleft.pop())
         nodesleft.difference_update(con_component)
-        components.append(min(con_component))
+        components.append(list(con_component))
 
     return components
 
@@ -145,4 +145,5 @@ def bridges():
 
 
 if __name__ == "__main__":
-    pass
+    graph = read_graph('graphs/graph_100000_4998622_1.csv')
+    print(connected_components(graph))
