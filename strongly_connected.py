@@ -36,18 +36,21 @@ def find_SCC(graph):
 
 
 
-    def dfs(at, SCC=0, j=1):
+    def dfs(at, j=1):
+        flag = False
         stackk.append(at)
         bool_stack[at] = True
         low[at] = ids[at] = j
 
         for to in matrix_graph[at]:
             if ids[to] == -1:
-                dfs(to, SCC, j+1)
-            if bool_stack[to]:
+                dfs(to, j+1)
+            if to == at:
+                flag = True
+            if bool_stack[to] and to != at:
                 low[at] = min(low[at], low[to])
 
-        if ids[at] == low[at]:
+        if ids[at] == low[at] and not flag:
             for node in stackk:
                 stackk.pop()
 
