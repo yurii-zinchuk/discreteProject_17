@@ -28,8 +28,8 @@ def read_graph(path: str) -> list:
             graph.append((int(line[0]), int(line[1])))
 
     return graph
-
-
+  
+  
 def write_graph(path: str, graph: list) -> None:
     """Writes graph represented as
     list of tuples, where tuple is an edge,
@@ -51,7 +51,7 @@ def create_adj_matrix(graph: list) -> dict:
     given the list of it's edges.
 
     Args:
-        graph (list): Graph as a list of edges
+        graph (set): Graph as a list of edges
 
     Returns:
         dict: Adjacency matrix
@@ -145,5 +145,5 @@ def bridges():
 
 
 if __name__ == "__main__":
-    graph = read_graph('graphs/graph_100000_4998622_1.csv')
-    print(connected_components(graph))
+    graph = read_graph('graphs/my_test.csv')
+    print((create_adj_matrix(graph[1:])))
