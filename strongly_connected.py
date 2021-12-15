@@ -9,10 +9,10 @@ def find_SCC(graph):
     value = 0
     stackk = []
     low = {}
-    ids = [-1 for _ in range(len(graph) - 1)]
-    bool_stack = [False for _ in range(len(graph) - 1)]
-
     matrix_graph = main.create_adj_matrix(graph[1:])
+    ids = {key : -1 for key in list(matrix_graph.keys())}
+    bool_stack = {key: False for key in list(matrix_graph.keys())}
+
 
 
     def dfs(at, SCC=0, j=1):
@@ -41,7 +41,7 @@ def find_SCC(graph):
 
 
     print(matrix_graph)
-    for i in range(1, len(matrix_graph)):
+    for i in list(matrix_graph.keys()):
         dfs(i)
     return low
 
