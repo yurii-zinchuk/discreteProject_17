@@ -33,21 +33,22 @@ def find_SCC(graph):
     print(matrix_graph)
     ids = {key: -1 for key in list(matrix_graph.keys())}
     bool_stack = {key: False for key in list(matrix_graph.keys())}
+    j = 0
 
 
-
-    def dfs(at, j=1):
+    def dfs(at, j):
         flag = False
         stackk.append(at)
         bool_stack[at] = True
-        low[at] = ids[at] = j
+        j += 1
+        low[at] = ids[at] = len(low)
 
         for to in matrix_graph[at]:
             if ids[to] == -1:
-                dfs(to, j+1)
+                dfs(to, j)
             if to == at:
                 flag = True
-            if bool_stack[to] and to != at:
+            if bool_stack[to] and not flag:
                 low[at] = min(low[at], low[to])
 
         if ids[at] == low[at] and not flag:
@@ -61,7 +62,7 @@ def find_SCC(graph):
             return 1
 
     for i in list(matrix_graph.keys()):
-        dfs(i)
+        dfs(i, j)
     return low
 
 
