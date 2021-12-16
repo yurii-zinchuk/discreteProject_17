@@ -3,7 +3,7 @@ Documentation
 """
 import main
 import sys
-sys.setrecursionlimit(1500)
+sys.setrecursionlimit(100000)
 
 
 def create_Dadj_matrix(graph: list) -> dict:
@@ -32,7 +32,6 @@ def find_SCC(graph):
     stackk = []
     low = {}
     matrix_graph = create_Dadj_matrix(graph[1:])
-    print(matrix_graph)
     ids = {key: -1 for key in list(matrix_graph.keys())}
     bool_stack = {key: False for key in list(matrix_graph.keys())}
 
@@ -45,11 +44,13 @@ def find_SCC(graph):
         low[at] = ids[at] = len(low) + 1
 
         for to in matrix_graph[at]:
-            if ids[to] == -1:
-                dfs(to)
-            if bool_stack[to]:
-                low[at] = min(low[at], low[to])
-
+            try:
+                if ids[to] == -1:
+                    dfs(to)
+                if bool_stack[to]:
+                    low[at] = min(low[at], low[to])
+            except KeyError:
+                pass
         w = -1  # To store stack extracted vertices
         if ids[at] == low[at]:
             while w != at:
@@ -63,16 +64,9 @@ def find_SCC(graph):
 
     for i in list(matrix_graph.keys()):
         dfs(i)
-
     return end_result
 
 
-
-
-
-
-
-
 if __name__ == "__main__":
-    graph = main.read_graph("graphs/my_test.csv")
+    graph = main.read_graph("graphs/graph_100000_4997346_0.csv")
     print(find_SCC(graph))
