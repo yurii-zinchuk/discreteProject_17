@@ -173,30 +173,6 @@ def dfs_tree(graph:dict, start:int) -> dict:
 
     return dfs_tree
 
-def dfs_tree_order(graph:dict, start:int):
-    """
-    Returns a list of ordered vertices from a dfs-tree
-    """
-
-    stack, vertices, visited, i = [start], [], set(), 1
-
-    while stack:
-        node = stack[-1]
-        if node not in vertices:
-            vertices.append(node)
-        visited.add(node)
-
-        for neighbour in sorted(graph[node]):
-            if neighbour not in visited:
-                stack.append(neighbour)
-                visited.add(neighbour)
-                break
-        else:
-            stack.pop()
-            continue
-
-    return vertices
-
 
 def cut_vertices(graph: dict):
     """
