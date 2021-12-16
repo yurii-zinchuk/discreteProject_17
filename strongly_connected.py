@@ -37,32 +37,27 @@ def find_SCC(graph):
 
 
     def dfs(at):
-        flag = False
-        if at not in stackk:
-            stackk.append(at)
+        stackk.append(at)
         bool_stack[at] = True
         low[at] = ids[at] = len(low) + 1
 
         for to in matrix_graph[at]:
             if ids[to] == -1:
                 dfs(to)
-            if to == at:
-                flag = True
-            if bool_stack[to] and not flag:
+            if bool_stack[to]:
                 low[at] = min(low[at], low[to])
 
-        if ids[at] == low[at] and not flag:
-            for node in stackk:
-                stackk.pop()
+        w = -1  # To store stack extracted vertices
+        if ids[at] == low[at]:
+            while w != at:
+                w = stackk.pop()
+                yield w
+                bool_stack[w] = False
 
-                bool_stack[node] = False
-                low[node] = ids[at]
-                if node == at:
-                    break
-            return 1
+            print("")
 
     for i in list(matrix_graph.keys()):
-        dfs(i)
+        print(dfs(i).__repr__())
     return low
 
 
