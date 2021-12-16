@@ -119,7 +119,7 @@ def connected_components(graph: list) -> list:
     while nodesleft:
         con_component = dfs(matrix_graph, nodesleft.pop())
         nodesleft.difference_update(con_component)
-        components.append(min(con_component))
+        components.append(list(con_component))
 
     return components
 
@@ -239,3 +239,4 @@ if __name__ == "__main__":
     my_graph = read_graph('graphs/graph_100_1942_0.csv')
     my_simple_graph = read_graph('graphs/simple_test.csv')
     print(cut_vertices(create_adj_matrix(my_simple_graph[1:])))
+
