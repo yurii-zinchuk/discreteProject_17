@@ -4,7 +4,6 @@ Functions are able to analyse graphs' connected components,
 strongly connected components, briges and connection points.
 """
 
-
 import csv
 
 
@@ -199,39 +198,39 @@ def dfs_tree_order(graph:dict, start:int):
     return vertices
 
 
-
-def cut_vertices_dfs(vertex: int, root, d, h, used, order, graph: dict, cut_v):
-    """
-    Helper function for cut_vertices
-    """
-
-    used[vertex] = 1
-    d[vertex] = h[vertex] = order
-    order += 1
-    children = 0
-
-    for u in graph[vertex]:
-        if u == root:
-            continue
-        elif used[u]:
-            # коли ребро зворотнє
-            h[vertex] = min(h[vertex], d[u])
-        else:
-            # коли ребро пряме
-            cut_vertices_dfs(u, vertex, d, h, used, order, graph, cut_v)
-            h[vertex] = min(h[vertex], h[u])
-            children += 1
-            if h[u] >= d[vertex] and root != -1:
-                cut_v[vertex] = 1
-
-    # спеціальний випадок, якщо вершина є коренем (якщо root == -1)
-    if root == -1 and children > 1:
-        cut_v[vertex] = 1
-
 def cut_vertices(graph: dict):
     """
     Returns a list of cut vertices
     """
+
+    def cut_vertices_dfs(vertex: int, root, d, h, used, order, graph: dict, cut_v):
+        """
+        Helper function for cut_vertices
+        """
+
+        used[vertex] = 1
+        d[vertex] = h[vertex] = order
+        order += 1
+        children = 0
+
+        for u in graph[vertex]:
+            if u == root:
+                continue
+            elif used[u]:
+                # коли ребро зворотнє
+                h[vertex] = min(h[vertex], d[u])
+            else:
+                # коли ребро пряме
+                cut_vertices_dfs(u, vertex, d, h, used, order, graph, cut_v)
+                h[vertex] = min(h[vertex], h[u])
+                children += 1
+                if h[u] >= d[vertex] and root != -1:
+                    cut_v[vertex] = 1
+
+        # спеціальний випадок, якщо вершина є коренем (якщо root == -1)
+        if root == -1 and children > 1:
+            cut_v[vertex] = 1
+
 
     n = len(graph.keys()) + 1
     used, d, h, cut_v = [0] * n, [0] * n, [0] * n, [0] * n
