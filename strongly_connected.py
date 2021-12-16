@@ -6,7 +6,7 @@ import sys
 sys.setrecursionlimit(100000)
 
 
-def create_Dadj_matrix(graph: list) -> dict:
+def create_dadj_matrix(graph: list) -> dict:
     """Return adjacency matrix of a graph,
     given the list of it's edges.
 
@@ -31,11 +31,9 @@ def find_SCC(graph):
     used_nodes = set()
     stackk = []
     low = {}
-    matrix_graph = create_Dadj_matrix(graph[1:])
+    matrix_graph = create_dadj_matrix(graph[1:])
     ids = {key: -1 for key in list(matrix_graph.keys())}
     bool_stack = {key: False for key in list(matrix_graph.keys())}
-
-
 
     def dfs(at):
         result = []
@@ -50,7 +48,11 @@ def find_SCC(graph):
                 if bool_stack[to]:
                     low[at] = min(low[at], low[to])
             except KeyError:
-                pass
+                # Means we encountered a node which does not have neighbour nodes.
+                # We add it to SCC list as a separate component
+                if [to] not in end_result:
+                    end_result.append([to])
+
         w = -1  # To store stack extracted vertices
         if ids[at] == low[at]:
             while w != at:
@@ -68,5 +70,5 @@ def find_SCC(graph):
 
 
 if __name__ == "__main__":
-    graph = main.read_graph("graphs/graph_100000_4997346_0.csv")
+    graph = main.read_graph("graphs/test4.csv")
     print(find_SCC(graph))
