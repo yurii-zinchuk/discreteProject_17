@@ -54,15 +54,16 @@ def find_SCC(graph):
         if ids[at] == low[at]:
             while w != at:
                 w = stackk.pop()
-                result.append(w)
+                if w not in used_nodes:
+                    result.append(w)
                 bool_stack[w] = False
-            if len(result) > 1:
+            used_nodes.update(result)
+            if len(result) > 0:
                 end_result.append(result)
-
-
 
     for i in list(matrix_graph.keys()):
         dfs(i)
+
     return end_result
 
 
