@@ -176,7 +176,13 @@ def dfs_tree(graph:dict, start:int) -> dict:
 
 def cut_vertices(graph: dict):
     """
-    Returns a list of cut vertices
+    A function that finds cut vertices in O(n+m)
+
+    Args:
+        graph (dict): Adjacency matrix of a graph
+
+    Returns:
+        list: numbers of points, whose removal disconnects graph
     """
 
     def cut_vertices_dfs(vertex: int, root, d, h, used, order, graph: dict, cut_v):
