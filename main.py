@@ -7,6 +7,7 @@ import strongly_connected
 import find_bridges
 import func_cut_vertices
 import csv
+import connected_components
 
 
 def strongly_connected_components(graph):
@@ -38,3 +39,15 @@ def bridges(graph):
     Documentation here
     """
     return find_bridges.find_bridges(graph)
+
+
+def connected_components(graph: list) -> list:
+    """Returns connected components of undirected graph
+
+    Args:
+        graph (list): graph as list of tuples
+
+    Returns:
+        list: list of connected components
+    """
+    return connected_components.connected_components(graph)
