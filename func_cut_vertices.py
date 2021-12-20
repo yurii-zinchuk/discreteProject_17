@@ -45,8 +45,9 @@ def cut_vertices(graph: dict):
     n = len(graph.keys()) + 1
     used, d, h, cut_v = [0] * n, [0] * n, [0] * n, [0] * n
     for i in range(1,n):
-        if used[i] == 0:
+        if i in graph.keys():
             cut_vertices_dfs(i, -1, d, h, used, 1, graph, cut_v)
+            break
 
     cut_v_names = []
     for i in range(n):
