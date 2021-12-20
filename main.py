@@ -135,7 +135,16 @@ def strongly_connected_components(graph):
 
 def cut_vertices(graph):
     """
-    Documentation here.
+    A function that finds cut vertices in O(n+m)
+
+    Args:
+        graph (dict): Adjacency matrix of a graph
+
+    Returns:
+        list: numbers of points, whose removal disconnects graph
+
+    >>> cut_vertices({1: {4}, 4: {1, 2, 3}, 2: {3, 4}, 3: {2, 4, 6, 7, 8}, 6: {3, 5, 7}, 8: {3}, 5: {6, 7}, 7: {3, 5, 6}})
+    [3, 4]
     """
     return func_cut_vertices.cut_vertices(graph)
 
