@@ -1,6 +1,7 @@
 """
 This is script for strongly connected component search function.
 """
+import main
 
 
 def create_dadj_matrix(graph: list) -> dict:
@@ -13,6 +14,7 @@ def create_dadj_matrix(graph: list) -> dict:
     Returns:
         dict: Adjacency matrix of directed graph
     """
+    graph = graph[1:]
     adj_matrix = dict()
     for node1, node2 in graph:
         if node1 not in adj_matrix:
@@ -32,13 +34,13 @@ def find_SCC(graph):
     This algorithm depends on recursion, so on very large graphs
     encounters stack overflow.
     Args:
-        graph (set): Directed graph as a list of edges, here a list of (int, int) tuples.
+        graph (list): Directed graph as a list of edges, here a list of (int, int) tuples.
     Returns:
         list: list of all the SCC's of the graph, which are also lists.
     """
     end_result = []  # The list of all SCC's we are going to return
     stackk = []  # Stack for dfs()
-    matrix_graph = create_dadj_matrix(graph[1:])
+    matrix_graph = create_dadj_matrix(graph)
     used_nodes = set()
     ids = {key: -1 for key in list(matrix_graph.keys())}  # dict of id's we are giving to every node. -1 marks unvisited node
     low = {}  # dict of lowest possible id we are giving to every node after dfs
