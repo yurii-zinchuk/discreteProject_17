@@ -11,7 +11,8 @@ import read_write
 
 
 def read(path: str) -> list:
-    """Reads graph from file
+    """
+    Reads graph from file
 
     Args:
         path (str): path to the file
@@ -23,7 +24,8 @@ def read(path: str) -> list:
 
 
 def write(path: str, graph: list) -> None:
-    """Writes graph to file
+    """
+    Writes graph from list of tuples to file.
 
     Args:
         path (str): path to file
@@ -34,9 +36,17 @@ def write(path: str, graph: list) -> None:
 
 def strongly_connected_components(graph):
     """
-    Documentation here
+    Function which uses Tarjan's alogrithm to find
+    strongly connected components of the given oriented graph.
+
+    Args:
+        graph (list): Directed graph as a list of edges,
+        here a list of (int, int) tuples.
+    Returns:
+        list: list of all the SCC's of the graph, which are also lists.
+
     >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES\
-"),(0, 1), (1, 2), (2, 3), (3, 0), (2, 4), (4, 5), (5, 6), (6, 4), (6, 7)])
+    "),(0, 1), (1, 2), (2, 3), (3, 0), (2, 4), (4, 5), (5, 6), (6, 4), (6, 7)])
     [[7], [4, 5, 6], [0, 1, 2, 3]]
     >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES\
 "), (0, 2), (2, 1), (1, 0), (0, 3), (3, 4)])
@@ -64,9 +74,17 @@ def cut_vertices(graph):
 
 def find_bridgess(graph):
     """
-    Documentation here
-    >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (0, 1), \
-(1, 2), (2, 3), (3, 4), (3, 5), (5, 1), (2, 6), (6, 7), (7, 8), (6, 8)])
+    Returns a list containing bridges on given undirected
+    graph.
+
+    Args:
+        graph (list): list of edges
+
+    Returns:
+        list: list of bridges
+
+    >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (0, 1), (1, \
+2), (2, 3), (3, 4), (3, 5), (5, 1), (2, 6), (6, 7), (7, 8), (6, 8)])
     [(3, 4), (2, 6), (0, 1)]
     >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"),(1, 2), \
 (2, 3), (3, 1), (2, 4), (4, 5), (5, 6), (4, 6)])
