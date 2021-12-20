@@ -5,7 +5,7 @@ strongly connected components, briges and connection points.
 """
 import strongly_connected
 import find_bridges
-import main_cut_vertices
+import func_cut_vertices
 import csv
 
 
@@ -137,7 +137,7 @@ def cut_vertices(graph):
     """
     Documentation here.
     """
-    return main_cut_vertices.cut_vertices(graph)
+    return func_cut_vertices.cut_vertices(graph)
 
 
 def bridges(graph):
