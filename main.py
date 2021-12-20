@@ -6,8 +6,30 @@ strongly connected components, briges and connection points.
 import func_strongly_connected
 import func_find_bridges
 import func_cut_vertices
-import csv
-import connected_components
+import func_connected_components
+import read_write
+
+
+def read(path: str) -> list:
+    """Reads graph from file
+
+    Args:
+        path (str): path to the file
+
+    Returns:
+        list: graph as list of tuples
+    """
+    return read_write.read_graph()
+
+
+def write(path: str, graph: list) -> None:
+    """[summary]
+
+    Args:
+        path (str): path to file
+        graph (list): graph as list of tuples
+    """
+    return read_write.write_graph(path, graph)
 
 
 def strongly_connected_components(graph):
@@ -54,4 +76,4 @@ def connected_components(graph: list) -> list:
     Returns:
         list: list of connected components
     """
-    return connected_components.connected_components(graph)
+    return func_connected_components.connected_components(graph)
