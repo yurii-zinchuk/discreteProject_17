@@ -233,7 +233,7 @@ def bridges(graph):
     """
     Documentation here
     """
-    return find_bridges(graph)
+    return find_bridges.find_bridges(graph)
 
 
 
