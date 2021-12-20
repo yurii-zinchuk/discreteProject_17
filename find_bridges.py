@@ -1,8 +1,6 @@
 """
-documentation
+This module contains functions required to find bridges
 """
-import sys
-sys.setrecursionlimit(5000)
 
 
 def create_adj_matrix(graph: list, directed: bool = False) -> dict:
@@ -34,10 +32,27 @@ def create_adj_matrix(graph: list, directed: bool = False) -> dict:
     return adj_matrix
 
 
-def _find_bridges(graph_dict, vertices, u, visited, parent, low, disc, time, bridges):
+def rec_find_bridges(graph_dict: dict, vertices: list, u: int, visited: list,
+                     parent: list, low: list, disc: list,
+                     time: int, bridges: list) -> list:
+    """Helping recursive function for find_bridges that checks if
+    edge is a bridge and adds it to a list.
+
+    Args:
+        graph_dict (dict): matrix of graph as a dict
+        vertices (list): list of vertices
+        u (int): vertice
+        visited (list): list of bool of the vertice
+        parent (list): list of vertices(parents)
+        low (list): list of numbers
+        disc (list): list of numbers
+        time (int): time of discovery
+        bridges (list): list of bridges as tuples
+
+    Returns:
+        List: list of bridges as tuples
     """
-    Documentation here
-    """
+
     idx = vertices.index(u)
     visited[idx] = True
     disc[idx] = time
@@ -48,20 +63,28 @@ def _find_bridges(graph_dict, vertices, u, visited, parent, low, disc, time, bri
         idx_1 = vertices.index(ver)
         if visited[idx_1] is False:
             parent[idx_1] = u
-            _find_bridges(graph_dict, vertices, ver, visited, parent, low, disc, time, bridges)
+            rec_find_bridges(graph_dict, vertices, ver, visited,
+                             parent, low, disc, time, bridges)
             low[idx] = min(low[idx], low[idx_1])
             if low[idx_1] > disc[idx]:
                 bridge = (u, ver)
                 bridges.append(bridge)
         elif ver != parent[idx]:
             low[idx] = min(low[idx], disc[idx_1])
+
     return bridges
 
 
-def find_bridges(graph):
+def find_bridges(graph: list) -> list:
+    """Returns a list containing bridges
+
+    Args:
+        graph (list): list of edges
+
+    Returns:
+        list: list of bridges
     """
-    Documentation here
-    """
+
     graph_dict = create_adj_matrix(graph)
     vertices = list(graph_dict.keys())
     vertices_num = len(graph_dict)
@@ -71,6 +94,8 @@ def find_bridges(graph):
     disc = [0] * vertices_num
     low = [0] * vertices_num
     parent = [0] * vertices_num
+
     for i in graph_dict:
         if visited[vertices.index(i)] is False:
-            return _find_bridges(graph_dict, vertices, i, visited, parent, low, disc, time, bridges)
+            return rec_find_bridges(graph_dict, vertices, i, visited, parent,
+                                    low, disc, time, bridges)

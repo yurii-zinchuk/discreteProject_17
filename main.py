@@ -28,8 +28,8 @@ def read_graph(path: str) -> list:
             graph.append((int(line[0]), int(line[1])))
 
     return graph
-  
-  
+
+
 def write_graph(path: str, graph: list) -> None:
     """Writes graph represented as
     list of tuples, where tuple is an edge,
@@ -46,7 +46,7 @@ def write_graph(path: str, graph: list) -> None:
             writer.writerow(edge)
 
 
-def create_adj_matrix(graph: list, directed: bool=False) -> dict:
+def create_adj_matrix(graph: list, directed: bool = False) -> dict:
     """Return adjacency matrix of a graph,
     given the list of it's edges.
 
@@ -132,7 +132,7 @@ def strongly_connected_components(graph):
     return strongly_connected.find_SCC(graph)
 
 
-def dfs_tree(graph:dict, start:int) -> dict:
+def dfs_tree(graph: dict, start: int) -> dict:
     """
     Beautiful, but useless
 
@@ -214,10 +214,9 @@ def cut_vertices(graph: dict):
         if root == -1 and children > 1:
             cut_v[vertex] = 1
 
-
     n = len(graph.keys()) + 1
     used, d, h, cut_v = [0] * n, [0] * n, [0] * n, [0] * n
-    for i in range(1,n):
+    for i in range(1, n):
         if used[i] == 0:
             cut_vertices_dfs(i, -1, d, h, used, 1, graph, cut_v)
 
@@ -234,6 +233,3 @@ def bridges(graph):
     Documentation here
     """
     return find_bridges(graph)
-
-
-
