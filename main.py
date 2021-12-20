@@ -5,6 +5,7 @@ strongly connected components, briges and connection points.
 """
 import strongly_connected
 import find_bridges
+import main_cut_vertices
 import csv
 
 
@@ -173,6 +174,10 @@ def dfs_tree(graph:dict, start:int) -> dict:
                 dfs_tree[stack[-1]] |= {stack[-2]}
 
     return dfs_tree
+
+
+def cut_vertices(graph):
+    return main_cut_vertices.cut_vertices(graph)
 
 
 def bridges(graph):
