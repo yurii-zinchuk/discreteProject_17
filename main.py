@@ -70,7 +70,15 @@ def cut_vertices(graph):
 
 def find_bridgess(graph):
     """
-    Documentation here
+    Returns a list containing bridges on given undirected
+    graph.
+
+    Args:
+        graph (list): list of edges
+
+    Returns:
+        list: list of bridges
+
     >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (0, 1), (1, 2), (2, 3), (3, 4), (3, 5), (5, 1), (2, 6), (6, 7), (7, 8), (6, 8)])
     [(3, 4), (2, 6), (0, 1)]
     >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"),(1, 2), (2, 3), (3, 1), (2, 4), (4, 5), (5, 6), (4, 6)])
