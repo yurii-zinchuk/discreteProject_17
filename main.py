@@ -104,6 +104,6 @@ def connected_components(graph: list) -> list:
     >>> connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (1, 3\
 ), (2, 3), (3, 5), (5, 6), (5, 4), (7, 8), \
 (7, 9), (14, 12), (12, 11), (12, 13), (11, 13)])
-    [[2, 3, 4, 5, 6], [8, 9, 7], [11, 12, 13, 14]]
+    [[1, 2, 3, 4, 5, 6], [8, 9, 7], [11, 12, 13, 14]]
     """
     return func_connected_components.connected_components(graph)
