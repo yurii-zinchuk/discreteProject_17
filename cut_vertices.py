@@ -2,6 +2,7 @@
 Module for findning cut vertices by Roman Mutel
 """
 
+
 def cut_vertices(graph: dict):
     """
     A function that finds cut vertices in O(n+m)

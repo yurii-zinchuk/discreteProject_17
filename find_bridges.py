@@ -1,8 +1,6 @@
 """
 documentation
 """
-import sys
-sys.setrecursionlimit(5000)
 
 
 def create_adj_matrix(graph: list, directed: bool = False) -> dict:
