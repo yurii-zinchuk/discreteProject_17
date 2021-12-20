@@ -1,7 +1,6 @@
 """
 This is script for strongly connected component search function.
 """
-import main
 
 
 def create_dadj_matrix(graph: list) -> dict:
