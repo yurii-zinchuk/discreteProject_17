@@ -235,8 +235,3 @@ def bridges():
     pass
 
 
-if __name__ == "__main__":
-    my_graph = read_graph('graphs/graph_100_1942_0.csv')
-    my_simple_graph = read_graph('graphs/simple_test.csv')
-    print(cut_vertices(create_adj_matrix(my_simple_graph[1:])))
-
