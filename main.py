@@ -19,7 +19,7 @@ def read(path: str) -> list:
     Returns:
         list: graph as list of tuples
     """
-    return read_write.read_graph()
+    return read_write.read_graph(path)
 
 
 def write(path: str, graph: list) -> None:
@@ -79,5 +79,9 @@ def connected_components(graph: list) -> list:
 
     Returns:
         list: list of connected components
+    >>> connected_components()
     """
     return func_connected_components.connected_components(graph)
+
+
+print(read('graphs/gr.csv'))
