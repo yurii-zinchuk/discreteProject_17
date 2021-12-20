@@ -1,8 +1,6 @@
 """
 This is script for strongly connected component search function.
 """
-import sys
-sys.setrecursionlimit(1000000)
 
 
 def create_dadj_matrix(graph: list) -> dict:
