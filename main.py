@@ -7,7 +7,7 @@ import func_strongly_connected
 import func_find_bridges
 import func_cut_vertices
 import func_connected_components
-import read_write
+import func_read_write
 
 
 def read(path: str) -> list:
@@ -20,7 +20,7 @@ def read(path: str) -> list:
     Returns:
         list: graph as list of tuples
     """
-    return read_write.read_graph(path)
+    return func_read_write.read_graph(path)
 
 
 def write(path: str, graph: list) -> None:
@@ -31,7 +31,7 @@ def write(path: str, graph: list) -> None:
         path (str): path to file
         graph (list): graph as list of tuples
     """
-    return read_write.write_graph(path, graph)
+    return func_read_write.write_graph(path, graph)
 
 
 def strongly_connected_components(graph):
