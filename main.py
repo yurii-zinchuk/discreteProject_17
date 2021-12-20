@@ -4,6 +4,7 @@ Functions are able to analyse graphs' connected components,
 strongly connected components, briges and connection points.
 """
 import strongly_connected
+import find_bridges
 import csv
 
 
@@ -128,7 +129,7 @@ def strongly_connected_components(graph):
     """
     Documentation here
     """
-    strongly_connected.find_SCC(graph)
+    return strongly_connected.find_SCC(graph)
 
 
 def dfs_tree(graph:dict, start:int) -> dict:
@@ -228,10 +229,11 @@ def cut_vertices(graph: dict):
     return cut_v_names
 
 
-def bridges():
+def bridges(graph):
     """
     Documentation here
     """
-    pass
+    return find_bridges(graph)
+
 
 
