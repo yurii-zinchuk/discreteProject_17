@@ -30,16 +30,19 @@ def create_adj_matrix(graph: list) -> dict:
     return adj_matrix
 
 
-def cut_vertices(graph: dict):
+def cut_vertices(graph: list):
     """
     A function that finds cut vertices in O(n+m)
 
     Args:
-        graph (dict): Adjacency matrix of a graph
+        graph (list): Adjacency matrix of a graph
 
     Returns:
         list: numbers of points, whose removal disconnects graph
     """
+
+
+    graph = create_adj_matrix(graph)
 
     def cut_vertices_dfs(vertex: int, root, d, h,
                          used, order, graph: dict, cut_v):
@@ -72,13 +75,8 @@ def cut_vertices(graph: dict):
 
     n = len(graph.keys()) + 1
     used, d, h, cut_v = [0] * n, [0] * n, [0] * n, [0] * n
-<<<<<<< HEAD
-    for i in range(1, n):
-        if used[i] == 0:
-=======
     for i in range(1,n):
         if i in graph.keys():
->>>>>>> cc2fe1383a48c5f03aff72c344aa3c90ba1f37ee
             cut_vertices_dfs(i, -1, d, h, used, 1, graph, cut_v)
             break
 

@@ -19,7 +19,7 @@ def read(path: str) -> list:
     Returns:
         list: graph as list of tuples
     """
-    return read_write.read_graph()
+    return read_write.read_graph(path)
 
 
 def write(path: str, graph: list) -> None:
@@ -48,13 +48,12 @@ def cut_vertices(graph):
     A function that finds cut vertices in O(n+m)
 
     Args:
-        graph (dict): Adjacency matrix of a graph
+        graph (list): Adjacency matrix of a graph
 
     Returns:
         list: numbers of points, whose removal disconnects graph
 
-    >>> cut_vertices({1: {4}, 4: {1, 2, 3}, 2: {3, 4}, 3: {2, 4, 6, 7, 8}, \
-6: {3, 5, 7}, 8: {3}, 5: {6, 7}, 7: {3, 5, 6}})
+    >>> cut_vertices([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (1, 4), (2, 4), (2, 3), (3, 4), (3, 6), (3, 8), (6, 5), (6, 7), (5, 7), (3, 7)])
     [3, 4]
     """
     return func_cut_vertices.cut_vertices(graph)
