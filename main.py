@@ -133,50 +133,10 @@ def strongly_connected_components(graph):
     return strongly_connected.find_SCC(graph)
 
 
-def dfs_tree(graph:dict, start:int) -> dict:
-    """
-    Beautiful, but useless
-
-    Returns an adjacency matrix for a DFS Spanning tree from the given graph
-
-    Args:
-        graph (dict): Adjacency matrix of a graph
-        start (int): Starting node
-
-    Returns:
-        dict: Adjacency matrix of a DFS spanning tree of the given graph
-    """
-
-    stack, dfs_tree, visited = [start], {}, set()
-
-    while stack:
-        node = stack[-1]
-        visited.add(node)
-
-        for neighbour in sorted(graph[node]):
-            if neighbour not in visited:
-                stack.append(neighbour)
-                visited.add(neighbour)
-                break
-        else:
-            stack.pop()
-            continue
-
-        if len(stack) > 1:
-            # print(stack[-2], stack[-1])
-            if stack[-2] not in dfs_tree.keys():
-                dfs_tree[stack[-2]] = {stack[-1]}
-            else:
-                dfs_tree[stack[-2]] |= {stack[-1]}
-            if stack[-1] not in dfs_tree.keys():
-                dfs_tree[stack[-1]] = {stack[-2]}
-            else:
-                dfs_tree[stack[-1]] |= {stack[-2]}
-
-    return dfs_tree
-
-
 def cut_vertices(graph):
+    """
+    Documentation here.
+    """
     return main_cut_vertices.cut_vertices(graph)
 
 
