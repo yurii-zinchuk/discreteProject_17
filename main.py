@@ -3,8 +3,8 @@ This module contains functions to work with graphs.
 Functions are able to analyse graphs' connected components,
 strongly connected components, briges and connection points.
 """
-import strongly_connected
-import find_bridges
+import func_strongly_connected
+import func_find_bridges
 import func_cut_vertices
 
 
@@ -16,7 +16,7 @@ def strongly_connected_components(graph):
     >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (0, 2), (2, 1), (1, 0), (0, 3), (3, 4)])
     [[4], [3], [0, 1, 2]]
     """
-    return strongly_connected.find_SCC(graph)
+    return func_strongly_connected.find_SCC(graph)
 
 
 def cut_vertices(graph):
@@ -40,4 +40,4 @@ def bridges(graph):
     """
     Documentation here
     """
-    return find_bridges.find_bridges(graph)
+    return func_find_bridges.find_bridges(graph)
