@@ -36,8 +36,12 @@ def cut_vertices(graph):
     return func_cut_vertices.cut_vertices(graph)
 
 
-def bridges(graph):
+def find_bridgess(graph):
     """
     Documentation here
+    >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (0, 1), (1, 2), (2, 3), (3, 4), (3, 5), (5, 1), (2, 6), (6, 7), (7, 8), (6, 8)])
+    [(3, 4), (2, 6), (0, 1)]
+    >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"),(1, 2), (2, 3), (3, 1), (2, 4), (4, 5), (5, 6), (4, 6)])
+    [(2, 4)]
     """
     return func_find_bridges.find_bridges(graph)
