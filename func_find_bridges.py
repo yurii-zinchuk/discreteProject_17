@@ -17,7 +17,7 @@ def create_adj_matrix(graph: list, directed: bool = False) -> dict:
 
     adj_matrix = dict()
 
-    for node1, node2 in graph:
+    for node1, node2 in graph[1:]:
         if node1 not in adj_matrix:
             adj_matrix[node1] = {node2}
         else:
@@ -99,3 +99,7 @@ def find_bridges(graph: list) -> list:
         if visited[vertices.index(i)] is False:
             return rec_find_bridges(graph_dict, vertices, i, visited, parent,
                                     low, disc, time, bridges)
+
+
+if __name__ == "__main__":
+    print(find_bridges([("A", 1), (1, 2), (2, 3), (3, 1), (2, 4), (4, 5), (5, 6), (4, 6)]))
