@@ -3,7 +3,7 @@ This module contains functions to work with graphs.
 Functions are able to analyse graphs' connected components,
 strongly connected components, briges and connection points.
 """
-
+import strongly_connected
 import csv
 
 
@@ -124,11 +124,11 @@ def connected_components(graph: list) -> list:
     return components
 
 
-def strongly_connected_components():
+def strongly_connected_components(graph):
     """
     Documentation here
     """
-    pass
+    strongly_connected.find_SCC(graph)
 
 
 def dfs_tree(graph:dict, start:int) -> dict:
