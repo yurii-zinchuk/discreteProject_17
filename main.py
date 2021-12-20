@@ -6,12 +6,15 @@ strongly connected components, briges and connection points.
 import strongly_connected
 import find_bridges
 import func_cut_vertices
-import csv
 
 
 def strongly_connected_components(graph):
     """
     Documentation here
+    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"),(0, 1), (1, 2), (2, 3), (3, 0), (2, 4), (4, 5), (5, 6), (6, 4), (6, 7)])
+    [[7], [4, 5, 6], [0, 1, 2, 3]]
+    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (0, 2), (2, 1), (1, 0), (0, 3), (3, 4)])
+    [[4], [3], [0, 1, 2]]
     """
     return strongly_connected.find_SCC(graph)
 
