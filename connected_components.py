@@ -16,7 +16,7 @@ def create_adj_matrix(graph: list) -> dict:
 
     adj_matrix = dict()
 
-    for node1, node2 in graph:
+    for node1, node2 in graph[1:0]:
         if node1 not in adj_matrix:
             adj_matrix[node1] = {node2}
         else:
@@ -68,7 +68,7 @@ def connected_components(graph: list) -> list:
         list: Connected components
     """
 
-    matrix_graph = create_adj_matrix(graph[1:])
+    matrix_graph = create_adj_matrix(graph)
     nodesleft = set(matrix_graph.keys())
     components = []
 
