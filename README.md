@@ -19,19 +19,22 @@
 ### Читання графу з файлу
 Описана в файлі [func_read_write.py](https://github.com/gingrwho/discreteProject_17/blob/main/func_read_write.py)
 ```python
-def read_graph(path: str) -> list:
+def read_graph(path: str) -> list
 ```
 Парсить csv файл в список кортежів.<br>
 Вигляд списку:
 ```
-[(NUMBER OF NODES, NUMBER OF VERTICES), (node1, node2), (node1, node3), (node2, node4)]
+[(NUMBER OF NODES, NUMBER OF EDGES), (node1, node2), (node1, node3), (node2, node4)]
 ```
 * Перший кортеж в масиві - це кількість вершин і ребер в ньому, оскільки саме такого формату csv файли нам даються.<br>
 
 ### Запис графу в файл
+Описана в файлі [func_read_write.py](https://github.com/gingrwho/discreteProject_17/blob/main/func_read_write.py)
 ```python
-def write_graph(path: str, graph: list) -> None:
+def write_graph(path: str, graph: list) -> None
 ```
-Аналогічно до попередньої функції, записує маси
+Аналогічно до попередньої функції, записує список кортежів в csv файл.
+
+
 
 
