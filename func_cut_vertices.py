@@ -40,8 +40,6 @@ def cut_vertices(graph: list):
     Returns:
         list: numbers of points, whose removal disconnects graph
     """
-
-
     graph = create_adj_matrix(graph)
 
     def cut_vertices_dfs(vertex: int, root, d, h,
@@ -75,7 +73,7 @@ def cut_vertices(graph: list):
 
     n = len(graph.keys()) + 1
     used, d, h, cut_v = [0] * n, [0] * n, [0] * n, [0] * n
-    for i in range(1,n):
+    for i in range(1, n):
         if i in graph.keys():
             cut_vertices_dfs(i, -1, d, h, used, 1, graph, cut_v)
             break

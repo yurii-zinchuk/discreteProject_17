@@ -99,7 +99,3 @@ def find_bridges(graph: list) -> list:
         if visited[vertices.index(i)] is False:
             return rec_find_bridges(graph_dict, vertices, i, visited, parent,
                                     low, disc, time, bridges)
-
-
-if __name__ == "__main__":
-    print(find_bridges([("A", 1), (1, 2), (2, 3), (3, 1), (2, 4), (4, 5), (5, 6), (4, 6)]))
