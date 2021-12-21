@@ -45,10 +45,10 @@ def strongly_connected_components(graph: list):
     Returns:
         list: list of all the SCC's of the graph, which are also lists.
 
-    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"\
+    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF EDGES"\
     ),(0, 1), (1, 2), (2, 3), (3, 0), (2, 4), (4, 5), (5, 6), (6, 4), (6, 7)])
     [[7], [4, 5, 6], [0, 1, 2, 3]]
-    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"\
+    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF EDGES"\
     ), (0, 2), (2, 1), (1, 0), (0, 3), (3, 4)])
     [[4], [3], [0, 1, 2]]
     """
@@ -65,7 +65,7 @@ def cut_vertices(graph):
     Returns:
         list: numbers of points, whose removal disconnects graph
 
-    >>> cut_vertices([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (1, 4), \
+    >>> cut_vertices([("NUMBER OF NODES", "NUMBER OF EDGES"), (1, 4), \
     (2, 4), (2, 3), (3, 4), (3, 6), (3, 8), (6, 5), (6, 7), (5, 7), (3, 7)])
     [3, 4]
     """
@@ -83,10 +83,10 @@ def find_bridgess(graph):
     Returns:
         list: list of bridges
 
-    >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (0, 1), (1, \
+    >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF EDGES"), (0, 1), (1, \
     2), (2, 3), (3, 4), (3, 5), (5, 1), (2, 6), (6, 7), (7, 8), (6, 8)])
     [(3, 4), (2, 6), (0, 1)]
-    >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF VERTEXES"),(1, 2), \
+    >>> find_bridgess([("NUMBER OF NODES", "NUMBER OF EDGES"),(1, 2), \
     (2, 3), (3, 1), (2, 4), (4, 5), (5, 6), (4, 6)])
     [(2, 4)]
     """
@@ -101,7 +101,7 @@ def connected_components(graph: list) -> list:
 
     Returns:
         list: list of connected components
-    >>> connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"), (1, 3\
+    >>> connected_components([("NUMBER OF NODES", "NUMBER OF EDGES"), (1, 3\
     ), (2, 3), (3, 5), (5, 6), (5, 4), (7, 8), \
     (7, 9), (14, 12), (12, 11), (12, 13), (11, 13)])
     [[1, 2, 3, 4, 5, 6], [8, 9, 7], [11, 12, 13, 14]]
