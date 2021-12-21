@@ -23,7 +23,7 @@ def create_dadj_matrix(graph: list) -> dict:
     return adj_matrix
 
 
-def find_SCC(graph):
+def find_SCC(graph: list):
     """
     Function which uses Tarjan's alogrithm to find
     strongly connected components of the given oriented graph.
@@ -45,7 +45,7 @@ def find_SCC(graph):
     low = {}  # dict of lowest possible id we are giving to every node after dfs
     bool_stack = {key: False for key in list(matrix_graph.keys())}  # bool stack (if node is visited or not)
 
-    def dfs(at):
+    def dfs(at: int):
         """
         This is our Depth First Search function constructed for Tarjan's algo.
 

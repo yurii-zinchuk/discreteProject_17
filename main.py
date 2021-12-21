@@ -34,7 +34,7 @@ def write(path: str, graph: list) -> None:
     return func_read_write.write_graph(path, graph)
 
 
-def strongly_connected_components(graph):
+def strongly_connected_components(graph: list):
     """
     Function which uses Tarjan's alogrithm to find
     strongly connected components of the given oriented graph.
@@ -45,11 +45,11 @@ def strongly_connected_components(graph):
     Returns:
         list: list of all the SCC's of the graph, which are also lists.
 
-    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES\
-    "),(0, 1), (1, 2), (2, 3), (3, 0), (2, 4), (4, 5), (5, 6), (6, 4), (6, 7)])
+    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"\
+    ),(0, 1), (1, 2), (2, 3), (3, 0), (2, 4), (4, 5), (5, 6), (6, 4), (6, 7)])
     [[7], [4, 5, 6], [0, 1, 2, 3]]
-    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES\
-"), (0, 2), (2, 1), (1, 0), (0, 3), (3, 4)])
+    >>> strongly_connected_components([("NUMBER OF NODES", "NUMBER OF VERTEXES"\
+), (0, 2), (2, 1), (1, 0), (0, 3), (3, 4)])
     [[4], [3], [0, 1, 2]]
     """
     return func_strongly_connected.find_SCC(graph)
