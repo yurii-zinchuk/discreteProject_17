@@ -14,10 +14,12 @@ def create_adj_matrix(graph: list) -> dict:
         dict: Adjacency matrix
     """
 
-    adj_matrix = dict()
+    adj_matrix = dict()  # Initialise dict, that will be a matrix
 
-    for node1, node2 in graph[1:]:
-        if node1 not in adj_matrix:
+    for node1, node2 in graph[1:]:  # iterate over the edges of graph
+
+        if node1 not in adj_matrix:  # if some nodes not in dict yet,
+            # add them as keys, otherwise add add new node to elements
             adj_matrix[node1] = {node2}
         else:
             adj_matrix[node1].add(node2)
@@ -41,17 +43,18 @@ def dfs(graph: dict, start: int) -> set:
         set: Nodes visited after dfs
     """
 
+    # initialise stack and set of visited nodes
     stack, visited = [start], set()
 
-    while stack:
+    while stack:  # run till stack is non-emty
         node = stack.pop()
-        if node in visited:
+        if node in visited:  # if node was already visited, get another
             continue
 
-        for neighbour in graph[node]:
+        for neighbour in graph[node]:  # add all node's neighbours to the stack
             stack.append(neighbour)
 
-        visited.add(node)
+        visited.add(node)  # add node to set of visited nodes
 
     return visited
 
@@ -68,13 +71,20 @@ def connected_components(graph: list) -> list:
         list: Connected components
     """
 
+    # create adjacency matrix from list of edges
     matrix_graph = create_adj_matrix(graph)
+    # create set of nodes that have not been added to any connected component
     nodesleft = set(matrix_graph.keys())
+    # initialise empty list of connected components
     components = []
 
+    # run till left nodes that have not been assigned a connected component
     while nodesleft:
+        # find connected component in the graph
         con_component = dfs(matrix_graph, nodesleft.pop())
+        # remove all nodes that are in a component from nodesleft
         nodesleft.difference_update(con_component)
+        # add connected component to list of connected components
         components.append(list(con_component))
 
     return components
