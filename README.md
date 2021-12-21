@@ -16,7 +16,7 @@
 ## Вступ
 Вступ тут
 
-### Читання графу з файлу
+## Читання графу з файлу
 Описана у файлі [func_read_write.py](https://github.com/gingrwho/discreteProject_17/blob/main/func_read_write.py)
 ```python
 def read_graph(path: str) -> list
@@ -28,14 +28,14 @@ def read_graph(path: str) -> list
 ```
 * Перший кортеж в масиві - це кількість вершин і ребер в ньому, оскільки саме такого формату csv файли нам даються.<br>
 
-### Запис графу в файл
+###Запис графу в файл
 Описана у файлі [func_read_write.py](https://github.com/gingrwho/discreteProject_17/blob/main/func_read_write.py)
 ```python
 def write_graph(path: str, graph: list) -> None
 ```
 Аналогічно до попередньої функції, записує список кортежів в csv файл.
 
-### Пошук компонентів зв'язності
+## Пошук компонент зв'язності
 Описана у файлі [func_connected_components.py](https://github.com/gingrwho/discreteProject_17/blob/main/func_connected_components.py)
 ```python
 def connected_components(graph: list) -> list
